@@ -9,11 +9,6 @@
   "dependencies": {
     "bower": "^1.3.12",
     "formidable": "~1.0.15",
-    "grunt": "0.4.5",
-    "grunt-contrib-jasmine": "1.1.0",
-    "grunt-run": "0.3.0",
-    "grunt-run-node": "0.1.3",
-    "grunt-template-jasmine-requirejs": "^0.2.0",
     "lodash": "~2.4.1"
   },
   "scripts": {
@@ -36,5 +31,11 @@
     "url": "https://github.com/homeslicesolutions/backbone-model-file-upload/issues"
   },
   "homepage": "https://github.com/homeslicesolutions/backbone-model-file-upload",
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-jasmine": "1.1.0",
+    "grunt-run": "0.3.0",
+    "grunt-run-node": "0.1.3",
+    "grunt-template-jasmine-requirejs": "^0.2.0"
+  }
 }
