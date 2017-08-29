@@ -1,10 +1,8 @@
-'use strict';
-
-var http = require('http'),
-    formidable = require('formidable'),
-    fs = require('fs'),
-    _ = require('lodash');
-
+var http = require('http');
+var formidable = require('formidable');
+var fs = require('fs');
+var _ = require('underscore');
+var util = require('util');
 
 var options = {
   host: 'localhost',
@@ -41,6 +39,7 @@ var server = http.createServer(function(req,res) {
 
           output[i] = {};
 
+          // This is fucking async
           fs.readFile(files[i].path, function (err, data) {
 
             output[i].type = files[i].type;
@@ -49,16 +48,17 @@ var server = http.createServer(function(req,res) {
             output[i].lastModifiedDate = files[i].lastModifiedDate;
             output[i].data = 'data:' + files[i].type + ';base64,' + data.toString('base64');
 
+            console.info(output);
+            res.end(JSON.stringify(output));
           });
 
         }
       }
 
+    } else {
+      console.info(output);
+      res.end(JSON.stringify(output));
     }
-
-    console.info(output);
-
-    res.end(JSON.stringify(output));
 
   });
 
@@ -83,4 +83,4 @@ function unflatten(obj, output) {
 }
 
 server.listen(options.port, options.host);
-console.log("listening on " + options.host + ':' + options.port);
+console.info("listening on " + options.host + ':' + options.port);
